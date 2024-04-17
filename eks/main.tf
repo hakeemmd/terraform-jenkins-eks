@@ -10,8 +10,8 @@ module "vpc" {
   public_subnets          = var.public_subnets
   
 
-  enable_dns_hostnames = true
-enable_nat_gateway = true
+    enable_dns_hostnames = true
+    enable_nat_gateway = true
 tags ={
     "kubernetes.io/cluster/my-eks-cluster"="shared"
 }
@@ -31,7 +31,7 @@ module "eks" {
   cluster_name    = "my-eks-cluster"
   cluster_version = "1.29"
 
-  vpc_id                   = module.vpc.vpc_id
+  vpc_id                   = module.vpc.default_vpc_id
   subnet_ids               = module.vpc.private_subnets
   
 # EKS Managed Node Group(s)
